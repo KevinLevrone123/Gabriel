@@ -1,0 +1,21 @@
+// Figura 14.24: ListTest.java 
+// Selecionando as cores de uma JList. 
+import javax.swing.JFrame;
+
+public class ListTest 
+{
+    public static void main(String[] args) 
+    { 
+        // Cria uma instância de ListFrame
+        ListFrame listFrame = new ListFrame(); 
+        
+        // Define o comportamento de fechamento da janela
+        listFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        
+        // Configura o tamanho da janela
+        listFrame.setSize(350, 150); 
+        
+        // Torna a janela visível
+        listFrame.setVisible(true); 
+    } // fim de main 
+} // fim da classe ListTest
