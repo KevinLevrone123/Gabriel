@@ -1,0 +1,55 @@
+// Figura 14.23: ListFrame.java 
+// JList que exibe uma lista de cores. 
+import java.awt.FlowLayout; 
+import java.awt.Color; 
+import javax.swing.JFrame; 
+import javax.swing.JList; 
+import javax.swing.JScrollPane; 
+import javax.swing.event.ListSelectionListener; 
+import javax.swing.event.ListSelectionEvent; 
+import javax.swing.ListSelectionModel;
+
+public class ListFrame extends JFrame 
+{ 
+    private JList<String> colorList; // lista para exibir cores
+    private static final String[] colorNames = { 
+        "Black", "Blue", "Cyan", "Dark Gray", "Gray", 
+        "Green", "Light Gray", "Magenta", "Orange", 
+        "Pink", "Red", "White", "Yellow" 
+    }; 
+
+    private static final Color[] colors = { 
+        Color.BLACK, Color.BLUE, Color.CYAN, Color.DARK_GRAY, Color.GRAY, 
+        Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE, 
+        Color.PINK, Color.RED, Color.WHITE, Color.YELLOW 
+    };
+
+    public ListFrame() 
+    { 
+        super("List Test"); 
+        setLayout(new FlowLayout()); 
+        // configura o layout do frame 
+        
+        colorList = new JList<>(colorNames); 
+        // cria JList com colorNames
+        
+        colorList.setVisibleRowCount(5); 
+        // exibe cinco linhas de uma vez 
+        
+        colorList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
+        // não permite múltiplas seleções
+        
+        // adiciona um JScrollPane que contém JList ao frame 
+        add(new JScrollPane(colorList)); 
+        
+        colorList.addListSelectionListener(new ListSelectionListener() { 
+            // classe interna anônima 
+            
+            // trata eventos de seleção de lista 
+            public void valueChanged(ListSelectionEvent event) 
+            { 
+                getContentPane().setBackground(colors[colorList.getSelectedIndex()]); 
+            } // fim do método valueChanged 
+        }); // fim da chamada para addListSelectionListener 
+    } // fim do construtor ListFrame 
+} // fim da classe ListFrame
